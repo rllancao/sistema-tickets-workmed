@@ -1,7 +1,7 @@
 import streamlit as st
 from supabase_client import supabase          # conexión global
-from pages.clients import client_portal       # 👉 tu módulo cliente
-from pages.admin import admin_dashboard       # 👉 tu módulo admin
+from app.clients import client_portal       # 👉 tu módulo cliente
+from app.admin import admin_dashboard       # 👉 tu módulo admin
 st.set_page_config(page_title="Plataforma de Tickets", layout="wide")
 
 
@@ -48,7 +48,12 @@ if not profile:
     st.stop()
 
 # Mensaje de bienvenida
-st.sidebar.success(f"Sesión: {profile['full_name']} · {profile['role']}")
+st.sidebar.success(f"Sesión: {profile['full_name']} · tu rol de usuario es: {profile['role']}")
+# --- Botón de cierre de sesión ---
+if st.sidebar.button("🔒 Cerrar sesión", type="primary"):
+    supabase.auth.sign_out()           # 1️⃣ invalida el access-token
+    st.session_state.pop("user", None) # 2️⃣ limpia la sesión local
+    st.rerun()                         # 3️⃣ recarga la página → aparece el formulario de login
 
 # Enruta según rol
 if profile["role"] == "admin":
