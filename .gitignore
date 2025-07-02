@@ -1,0 +1,42 @@
+# ------- Python artifacts -------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Package metadata
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Logs
+*.log
+
+# ------- Environment & Secrets -------
+# Local environment variables
+.env
+*.env
+
+# Streamlit secrets (never commit!)
+.streamlit/secrets.toml
+
+# Supabase local stack
+.supabase/
+
+# ------- Node / Front‑end -------
+node_modules/
+
+# ------- IDE / Editor files -------
+.vscode/
+.idea/
+
+# ------- OS files -------
+.DS_Store
+Thumbs.db
