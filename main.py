@@ -8,7 +8,7 @@ st.set_page_config(page_title="Plataforma de Tickets", layout="wide")
 
 
 # -------------------------
-# 1. LOGIN lateral (demo)
+# 1. LOGIN lateral
 # -------------------------
 if "user" not in st.session_state:
     with st.sidebar:
