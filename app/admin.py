@@ -1,6 +1,6 @@
 # pages/admin.py
 import streamlit as st
-from app.email_sender import enviar_correo_finalizado
+
 
 def admin_dashboard(supabase):
     st.header("Panel de Administración")
@@ -59,18 +59,7 @@ def admin_dashboard(supabase):
                             "status":           new_status,
                             "changed_by_user_id": admin_uid,
                         }).execute()
-                    # 👇 3. Llama a tu función de correo si el ticket se finaliza
-                        if new_status == "Finalizada":
-                            email_destinatario = t["users"]["email"]
-                            titulo_ticket = t["title"]
-                            id_ticket = t["id"]
-                            
-                            st.info(f"Enviando correo a {email_destinatario}...")
-                            enviado = enviar_correo_finalizado(email_destinatario, titulo_ticket, id_ticket)
-                            if enviado:
-                                st.success("Notificación por correo enviada.")
-                            else:
-                                st.error("No se pudo enviar la notificación por correo.")
+                    
                         
                         st.success(f"Ticket #{t['id'][:8]} → {new_status}")
                         st.rerun()  
