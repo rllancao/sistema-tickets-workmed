@@ -8,10 +8,10 @@ def enviar_correo_finalizado(destinatario: str, titulo_ticket: str, id_ticket: s
     Envía un correo de notificación usando las credenciales guardadas en st.secrets.
     """
     # Obtiene las credenciales de forma segura desde Streamlit Secrets
-    smtp_server = st.secrets["smtp"]["server"]
-    port = st.secrets["smtp"]["port"]
-    sender_email = st.secrets["smtp"]["email"]
-    password = st.secrets["smtp"]["password"]
+    smtp_server = st.secrets["server"]
+    port = st.secrets["port"]
+    sender_email = st.secrets["email"]
+    password = st.secrets["password"]
 
     # --- Lógica de tu script de correo ---
     msg = EmailMessage()

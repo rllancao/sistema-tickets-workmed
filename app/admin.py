@@ -1,4 +1,6 @@
 # pages/admin.py
+#python -m streamlit run main.py
+
 import streamlit as st
 from app.email_sender import enviar_correo_finalizado
 
@@ -20,7 +22,7 @@ def admin_dashboard(supabase):
     data = (
         supabase
         .table("tickets")
-        .select("id,title,description,status,created_at,users!inner(id,full_name)")
+        .select("id,title,description,status,created_at,users!inner(id,full_name,email)")
         .order("created_at")
         .execute()
         .data
